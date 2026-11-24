@@ -1,0 +1,157 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root {
+  --v-bg: #f4f2ee;
+  --v-surface: #ffffff;
+  --v-surface-2: #eae7e1;
+  --v-ink: #111113;
+  --v-ink-dim: rgba(17, 17, 19, 0.58);
+  --v-border: rgba(17, 17, 19, 0.12);
+  --v-accent: #ff4d00;
+  --v-accent-hover: #e04400;
+  --v-accent-ink: #111113;
+}
+
+html.dark {
+  --v-bg: #111113;
+  --v-surface: #1a1a1c;
+  --v-surface-2: #232326;
+  --v-ink: #f2efeb;
+  --v-ink-dim: rgba(242, 239, 235, 0.54);
+  --v-border: rgba(242, 239, 235, 0.11);
+  --v-accent: #ff4d00;
+  --v-accent-hover: #ff621f;
+  --v-accent-ink: #111113;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--v-bg);
+    color: var(--v-ink);
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html,
+    body,
+    * {
+      scroll-behavior: auto !important;
+    }
+  }
+
+  h1,
+  h2,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  code,
+  pre,
+  kbd,
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Official Google Sign-In button styling */
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: var(--v-surface);
+  background-image: none;
+  border: 1px solid var(--v-border);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--v-ink);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  height: 36px;
+  letter-spacing: 0.15px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gsi-material-button:hover:not(:disabled) {
+  background-color: var(--v-surface-2);
+  border-color: var(--v-accent);
+}
+
+.gsi-material-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.gsi-material-button-content-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  gap: 8px;
+}
+
+.gsi-material-button-icon {
+  height: 16px;
+  width: 16px;
+  min-width: 16px;
+}
+
+.gsi-material-button-contents {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "VectorOne_DSP",
+  "description": "VectorOne_DSP — Automated multi-platform search operator workbench, dork reference catalog, searchable findings database with CSV export, and Gmail alert notifications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
