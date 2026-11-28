@@ -54,6 +54,54 @@ Notes:
 - `lib/` — types, local storage, the dork catalog data, the operator cheat sheet, and Gmail auth
 - `docs/implementation-plan.md` — the original AI Studio implementation plan: product concept, confirmed design decisions, user flows, and visual identity
 
+## Visual overview
+
+### Project layout
+
+```mermaid
+flowchart TD
+    U["Analyst - browser"] --> GATE["Compliance and ethical-use gate"]
+    GATE --> WB["Query Workbench"]
+    WB --> API["/api/search - Gemini Search Grounding, server-side"]
+    WB --> LAUNCH["Platform launchers - Google, Bing, DDG, GitHub, Shodan, Wayback"]
+    WB --> FIND["Findings Database - browser-local"]
+    FIND --> EXPORT["CSV and JSON export"]
+    CAT["Dork Reference Catalog"] --> WB
+    HIST["Search History - audit trail"] --> WB
+    ALERTS["Gmail alert rules - Firebase Auth, confirmation modal first"] --> WB
+    INT["External API and webhook integrations - /api/integrations/proxy"] --> WB
+```
+
+### Mindmap
+
+```mermaid
+mindmap
+  root((VectorOne DSP))
+    Purpose
+      OSINT search operators
+      Authorized exposure auditing
+    Workbench
+      Dork query builder
+      Gemini Search Grounding
+      Platform launchers
+    Data
+      Findings database
+      CSV and JSON export
+      Search history audit
+    Alerts
+      Gmail rules
+      Firebase Auth
+      Confirmation before send
+    Guardrails
+      Compliance gate
+      Ethical-use checks
+```
+
+### Screenshots and artwork
+
+No UI screenshots are stored in this repository yet. Capture list for a future gallery: the Query Workbench, the Dork Reference Catalog, and the Findings Database - screenshots are binary files, so they are added by direct upload to a `docs/screenshots/` folder. The project logo is generated and pending direct upload to the profile repository's `assets/logos/` folder; once it is there, this README gains the centered logo header used by the other Catalyst Vector AIA repos.
+
+
 ## About this repository
 
 VectorOne_DSP was built in Google AI Studio and exported as a source zip on November 24, 2026. Cecil (Catalyst Vector AIA) created this repository, and the export was prepared and pushed as a snapshot the same day: the template README was replaced with this document, the package was renamed from the generic `ai-studio-applet` to `vectorone-dsp`, `.env.example` was rewritten with blank values (the export's Gemini entry was a placeholder — no real key was present or pushed), and the AI Studio implementation plan was preserved under `docs/`.
